@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+    <style>
+        h1 {
+            -webkit-user-select: none;
+            color: rgb(0, 0, 0);
+            user-select: none;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+
+
+        .pa {
+            margin-left: 150px;
+            margin-top: -60px;
+        }
+
+
+        .sc {
+            margin-top: -60px;
+            margin-left: 300px;
+        }
+
+
+        .hu {
+            margin-top: 100px;
+            margin-left: 420px;
+        }
+
+
+        .bot_w {
+
+            margin-top: 150px;
+            margin-left: 50px;
+        }
+
+        .bot_game {
+
+            margin-top: -60px;
+            margin-left: 420px;
+        }
+
+        .winner_w {
+            margin-top: -60px;
+            margin-left: 600px;
+        }
+
+        .winner {
+            margin-top: -60px;
+            margin-left: 1000px;
+        }
+
+        .score {
+            margin-top: 60px;
+            margin-left: 50px;
+        }
+
+
+        .bot {
+            margin-top: -60px;
+            margin-left: 300px;
+        }
+
+        .bot_0 {
+            margin-top: -60px;
+            margin-left: 400px;
+        }
+
+        .you {
+            margin-top: -60px;
+            margin-left: 700px;
+        }
+
+        .you_0 {
+            margin-top: -60px;
+            margin-left: 820px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hu">
+        <h1 id="ro" class="ro">Rock</h1>
+        <h1 id="pa" class="pa">Paper</h1>
+        <h1 id="sc" class="sc">Scissors</h1>
+    </div>
+
+    <div>
+        <h1 class="bot_w">
+            bot chose :
+        </h1>
+
+        <h1 id="botgame" class="bot_game">
+            0
+        </h1>
+    </div>
+
+    <div>
+
+        <h1 class="winner_w">
+            the winner is :
+        </h1>
+
+        <h1 id="winner" class="winner">
+            0
+        </h1>
+    </div>
+
+
+    <div>
+        <h1 class="score">
+            score
+        </h1>
+
+        <h1 class="bot">
+            bot :
+        </h1>
+
+        <h1 class="bot_0" id="bot_s">
+            0
+        </h1>
+
+        <h1 class="you">
+            you :
+        </h1>
+
+        <h1 class="you_0" id="you_s">
+            0
+        </h1>
+    </div>
+
+</body>
+
+
+<script>
+    ro.onclick = function rock() {
+        const choose1 = ["1", "2", "3"];
+
+        const random = Math.floor(Math.random() * choose1.length);
+
+
+
+        var r1 = choose1[random]
+
+        if (r1 == "1") {
+            document.getElementById("botgame").innerText = "Rock"
+        } else if (r1 == "2") {
+            document.getElementById("botgame").innerText = "Paper"
+        } else if (r1 == "3") {
+            document.getElementById("botgame").innerText = "Scissors"
+        }
+
+
+        if (document.getElementById("botgame").innerText == "Rock") {
+            document.getElementById("winner").innerText = "tie"
+        } else if (document.getElementById("botgame").innerText == "Paper") {
+            document.getElementById("winner").innerText = "bot win"
+            score_x++;
+            updateScore_bot()
+        } else if (document.getElementById("botgame").innerText == "Scissors") {
+            document.getElementById("winner").innerText = "You win"
+            score_o++;
+            updateScore_you()
+        }
+
+
+    }
+
+    pa.onclick = function paper() {
+        const choose1 = ["1", "2", "3"];
+
+        const random = Math.floor(Math.random() * choose1.length);
+
+
+
+        var r1 = choose1[random]
+
+        if (r1 == "1") {
+            document.getElementById("botgame").innerText = "Rock"
+        } else if (r1 == "2") {
+            document.getElementById("botgame").innerText = "Paper"
+        } else if (r1 == "3") {
+            document.getElementById("botgame").innerText = "Scissors"
+        }
+
+        if (document.getElementById("botgame").innerText == "Rock") {
+            document.getElementById("winner").innerText = "You win"
+            score_o++;
+            updateScore_you()
+        } else if (document.getElementById("botgame").innerText == "Paper") {
+            document.getElementById("winner").innerText = "tie"
+        } else if (document.getElementById("botgame").innerText == "Scissors") {
+            document.getElementById("winner").innerText = "bot win"
+            score_x++;
+            updateScore_bot()
+        }
+
+
+    }
+
+    sc.onclick = function secors() {
+        const choose1 = ["1", "2", "3"];
+
+        const random = Math.floor(Math.random() * choose1.length);
+
+
+
+        var r1 = choose1[random]
+
+        if (r1 == "1") {
+            document.getElementById("botgame").innerText = "Rock"
+        } else if (r1 == "2") {
+            document.getElementById("botgame").innerText = "Paper"
+        } else if (r1 == "3") {
+            document.getElementById("botgame").innerText = "Scissors"
+        }
+
+        if (document.getElementById("botgame").innerText == "Rock") {
+            document.getElementById("winner").innerText = "bot win"
+            score_x++;
+            updateScore_bot()
+        } else if (document.getElementById("botgame").innerText == "Paper") {
+            document.getElementById("winner").innerText = "you win"
+            score_o++;
+            updateScore_you()
+        } else if (document.getElementById("botgame").innerText == "Scissors") {
+            document.getElementById("winner").innerText = "tie"
+        }
+
+
+    }
+
+
+    let score_x = 0;
+    let score_o = 0;
+
+
+
+    function updateScore_bot() {
+        document.getElementById("bot_s").textContent = score_x;
+        console.log("im x score " + score_x)
+    }
+
+
+
+
+
+    function updateScore_you() {
+        document.getElementById("you_s").textContent = score_o;
+        console.log("im o score " + score_o)
+
+    }
+
+</script>
+
+</html>
